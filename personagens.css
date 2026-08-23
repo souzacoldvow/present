@@ -1,0 +1,102 @@
+```css id="x8k3pd"
+/* =========================================================
+   PERSONAGENS — CAMADA SOBRE OS CARDS
+========================================================= */
+
+.jujutsu-card {
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* IMAGEM */
+
+.jujutsu-character {
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 42px;
+
+    transform: translateX(-50%);
+
+    width: 115%;
+    height: 88%;
+
+    object-fit: contain;
+    object-position: center bottom;
+
+    display: block;
+
+    z-index: 20;
+
+    pointer-events: none;
+
+    filter:
+        drop-shadow(0 12px 18px rgba(0,0,0,.65));
+
+}
+
+
+/* Mantém nome e número visíveis */
+
+.card-number,
+.character-name,
+.character-role {
+
+    z-index: 30;
+
+}
+
+
+/* O placeholder fica atrás da imagem */
+
+.character-placeholder {
+
+    z-index: 1;
+
+}
+
+
+/* =========================================================
+   TAMANHOS INDIVIDUAIS
+========================================================= */
+
+.jujutsu-card:nth-child(1) .jujutsu-character {
+    width: 125%;
+    height: 92%;
+}
+
+.jujutsu-card:nth-child(2) .jujutsu-character {
+    width: 120%;
+    height: 92%;
+}
+
+.jujutsu-card:nth-child(3) .jujutsu-character {
+    width: 125%;
+    height: 92%;
+}
+
+.jujutsu-card:nth-child(4) .jujutsu-character {
+    width: 125%;
+    height: 92%;
+}
+
+
+/* =========================================================
+   CELULAR
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .jujutsu-character {
+
+        width: 110%;
+        height: 88%;
+
+        bottom: 40px;
+
+    }
+
+}
+```

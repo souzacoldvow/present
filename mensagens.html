@@ -1,0 +1,478 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Mensagens ♡</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <style>
+
+        /* =====================================================
+           BOTÃO CONTINUAR
+        ===================================================== */
+
+        .continue-jujutsu {
+            display: flex;
+            justify-content: center;
+            margin: 55px auto 20px;
+        }
+
+        .continue-jujutsu a {
+            display: inline-flex;
+            align-items: center;
+            gap: 18px;
+            padding: 15px 30px;
+            color: #c985b8;
+            text-decoration: none;
+            font-size: 9px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            border: 1px solid rgba(200,120,190,.35);
+            background: rgba(255,255,255,.025);
+            transition: .3s ease;
+        }
+
+        .continue-jujutsu a span {
+            font-size: 17px;
+        }
+
+        .continue-jujutsu a:hover {
+            color: #fff;
+            border-color: rgba(220,130,200,.75);
+            transform: translateX(5px);
+            box-shadow: 0 0 28px rgba(200,90,180,.18);
+        }
+
+
+        /* =====================================================
+           AJUSTES EXCLUSIVOS PARA CELULAR
+           
+           Não altera o visual original no computador.
+        ===================================================== */
+
+        @media (max-width: 700px) {
+
+            html,
+            body {
+                width: 100%;
+                max-width: 100%;
+                overflow-x: hidden;
+            }
+
+            body {
+                min-width: 0;
+            }
+
+
+            /* Cabeçalho */
+
+            .topbar {
+                width: 100%;
+                max-width: 100%;
+                padding-left: 18px;
+                padding-right: 18px;
+                gap: 15px;
+            }
+
+            .topbar .logo {
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+
+            .topbar nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+                gap: 8px 12px;
+                min-width: 0;
+            }
+
+            .topbar nav a {
+                white-space: nowrap;
+            }
+
+
+            /* Hero */
+
+            .simple-hero {
+                width: 100%;
+                max-width: 100%;
+                padding-left: 20px;
+                padding-right: 20px;
+                overflow-wrap: break-word;
+            }
+
+            .simple-hero h1 {
+                max-width: 100%;
+                font-size: clamp(38px, 11vw, 58px);
+                line-height: 1;
+                word-break: normal;
+            }
+
+            .simple-hero p {
+                max-width: 100%;
+            }
+
+
+            /* Mensagens */
+
+            .messages-section {
+                width: 100%;
+                max-width: 100%;
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .message-box {
+                width: 100%;
+                max-width: 100%;
+                overflow: hidden;
+            }
+
+            .message-box h2,
+            .message-box p {
+                max-width: 100%;
+                overflow-wrap: break-word;
+            }
+
+            .message-box p {
+                line-height: 1.7;
+            }
+
+
+            /* Botão */
+
+            .continue-jujutsu {
+                width: 100%;
+                padding: 0 15px;
+                margin-top: 45px;
+            }
+
+            .continue-jujutsu a {
+                max-width: 100%;
+            }
+
+
+            /* Rodapé */
+
+            footer {
+                width: 100%;
+                max-width: 100%;
+                padding-left: 20px;
+                padding-right: 20px;
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+
+        }
+
+
+        /* Celulares menores */
+
+        @media (max-width: 430px) {
+
+            .topbar {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .topbar nav {
+                gap: 6px 9px;
+            }
+
+            .topbar nav a {
+                font-size: 8px;
+            }
+
+            .simple-hero {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+
+            .simple-hero h1 {
+                font-size: 42px;
+            }
+
+            .messages-section {
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+
+            .message-box {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .continue-jujutsu {
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body class="sanrio-page">
+
+
+<header class="topbar">
+
+    <a
+        href="index.html"
+        class="logo"
+    >
+        ♡ PARA VOCÊ
+    </a>
+
+
+    <nav>
+
+        <a href="sanrio.html">
+            Sanrio
+        </a>
+
+        <a href="memories.html">
+            Memórias
+        </a>
+
+        <a
+            href="mensagens.html"
+            class="active"
+        >
+            Mensagens
+        </a>
+
+        <a href="jujutsu.html">
+            Another Side
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<main>
+
+
+<section class="simple-hero">
+
+    <span class="eyebrow">
+        03 • MENSAGENS
+    </span>
+
+
+    <h1>
+        Algumas coisas<br>
+        que eu queria dizer.
+    </h1>
+
+
+    <p>
+        Algumas palavras que eu queria deixar
+        guardadas para você.
+    </p>
+
+</section>
+
+
+
+<section class="messages-section">
+
+
+    <!-- =====================================================
+         MENSAGEM 01
+    ====================================================== -->
+
+    <article class="message-box">
+
+        <span>
+            01
+        </span>
+
+
+        <h2>
+            Para você
+        </h2>
+
+
+        <p>
+            Se alguém me perguntasse como é amar você, eu falaria
+            sobre paz, sobre o quanto é bom estar na sua companhia,
+            sobre como tudo parece mais leve quando converso com
+            você e sobre a beleza que existe em você — não só aquela
+            que os olhos enxergam, mas aquela que aparece no jeito
+            que você cuida, como dá risada, como fala, como presta
+            atenção e como faz as pessoas se sentirem importantes.
+        </p>
+
+
+        <p>
+            Se alguém me perguntasse como é amar você, eu diria
+            que é genuíno, forte e completamente viciante. Amar
+            você é uma certeza. Eu escolheria te amar hoje, amanhã
+            e em todos os dias em que tivesse a oportunidade de
+            escolher novamente, sem a menor sombra de dúvida.
+        </p>
+
+    </article>
+
+
+
+    <!-- =====================================================
+         MENSAGEM 02
+    ====================================================== -->
+
+    <article class="message-box">
+
+        <span>
+            02
+        </span>
+
+
+        <h2>
+            O que sinto
+        </h2>
+
+
+        <p>
+            Quando eu vejo uma coisa bonita, eu lembro de você
+            e do quanto eu sou feliz ao seu lado. Você me dá uma
+            certeza que eu não conhecia antes: a de que o futuro
+            pode ser um lugar bonito. Porque, se ele for ao seu
+            lado, eu não tenho medo do que ainda está por vir.
+        </p>
+
+
+        <p>
+            Agora eu sei que posso viver as coisas mais incríveis
+            ao lado da pessoa que eu amo. Obrigado por dividir
+            comigo, por me permitir conhecer o seu coração e por
+            ter escolhido viver ao meu lado. De todos os lugares
+            em que eu poderia estar, o meu preferido continua
+            sendo ao seu lado.
+        </p>
+
+    </article>
+
+
+
+    <!-- =====================================================
+         MENSAGEM 03
+    ====================================================== -->
+
+    <article class="message-box">
+
+        <span>
+            03
+        </span>
+
+
+        <h2>
+            Feliz aniversário
+        </h2>
+
+
+        <p>
+            Feliz aniversário, meu bem! Hoje é seu dia, você completa
+            seus 20 anos. Muito abençoada! Que esse dia se repita por
+            muitos anos e que você tenha um dia muito bom hoje, não
+            só hoje, mas todos os dias.
+        </p>
+
+
+        <p>
+            Que Deus abençoe muito você. Continue sendo essa pessoa
+            incrível e magnífica que você é todos os dias para mim,
+            como minha melhor amiga, namorada e futura esposa.
+        </p>
+
+
+        <p>
+            Olha, se eu pudesse escolher qualquer caminho, ainda
+            escolheria aquele que me levou até você, porque você
+            mudou a minha vida apenas por existir. Você transformou
+            dias comuns em lembranças inesquecíveis e fez o meu
+            coração encontrar paz onde antes existia dúvida.
+        </p>
+
+
+        <p>
+            E, se a vida me desse a chance de recomeçar mil vezes,
+            eu não mudaria o destino de encontrar você em nenhuma
+            delas. Eu pisaria nas mesmas estradas, cometeria os
+            mesmos erros e enfrentaria os mesmos desafios, só para
+            ter a certeza de que, no final de tudo, eu encontraria
+            você mais uma vez.
+        </p>
+
+
+        <p>
+            Mais uma vez, parabéns! Sou muito grato por ter você
+            comigo. 🩷🥳
+        </p>
+
+    </article>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     CONTINUAR PARA JUJUTSU
+========================================================== -->
+
+<div class="continue-jujutsu">
+
+    <a href="jujutsu.html">
+
+        CONTINUAR
+
+        <span>
+            →
+        </span>
+
+    </a>
+
+</div>
+
+
+</main>
+
+
+
+<footer>
+
+    <span>
+        MENSAGENS ♡
+    </span>
+
+
+    <a href="index.html">
+        Voltar ao início
+    </a>
+
+</footer>
+
+
+</body>
+
+</html>
+```

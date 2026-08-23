@@ -1,0 +1,819 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    >
+
+    <title>♡ Para Você</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* =====================================================
+           RENDER PRINCIPAL
+        ===================================================== */
+
+        .hero-render {
+            position: relative;
+            z-index: 2;
+
+            display: block;
+
+            width: 100%;
+            height: 100%;
+
+            max-width: 100%;
+            max-height: 100%;
+
+            object-fit: contain;
+            object-position: center bottom;
+
+            filter:
+                drop-shadow(0 25px 30px rgba(0,0,0,.25));
+
+            transform: scale(1.08);
+        }
+
+
+        /* =====================================================
+           MENU MOBILE
+        ===================================================== */
+
+        .mobile-menu {
+            position: fixed;
+
+            top: 68px;
+            left: 0;
+
+            width: 100%;
+
+            padding: 20px;
+
+            display: flex;
+            flex-direction: column;
+
+            gap: 5px;
+
+            background: rgba(247,227,234,.97);
+
+            backdrop-filter: blur(20px);
+
+            border-bottom:
+                1px solid rgba(100,55,75,.10);
+
+            box-shadow:
+                0 15px 35px rgba(100,50,70,.12);
+
+            z-index: 999;
+
+            opacity: 0;
+            visibility: hidden;
+
+            transform: translateY(-15px);
+
+            transition:
+                opacity .3s ease,
+                transform .3s ease,
+                visibility .3s ease;
+        }
+
+        .mobile-menu.open {
+            opacity: 1;
+            visibility: visible;
+
+            transform: translateY(0);
+        }
+
+        .mobile-menu a {
+            display: block;
+
+            padding: 15px;
+
+            border-radius: 6px;
+
+            color: #75465a;
+
+            font-size: 10px;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            background: rgba(255,255,255,.35);
+
+            transition: .25s;
+        }
+
+        .mobile-menu a:hover,
+        .mobile-menu a:active {
+            color: #c94f75;
+
+            background:
+                rgba(255,255,255,.75);
+        }
+
+
+        /* =====================================================
+           SEGURANÇA PARA TELAS PEQUENAS
+        ===================================================== */
+
+        @media (max-width: 600px) {
+
+            html,
+            body {
+                width: 100%;
+                max-width: 100%;
+                overflow-x: hidden;
+            }
+
+            .hero {
+                width: 100%;
+                overflow: hidden;
+            }
+
+            .hero-content {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .hero-character {
+                width: 100%;
+                max-width: 100%;
+
+                height: 390px;
+
+                overflow: visible;
+            }
+
+            .image-area {
+                width: 100%;
+                height: 100%;
+
+                max-width: 100%;
+            }
+
+            .hero-render {
+                width: 100%;
+                height: 100%;
+
+                max-width: 100%;
+                max-height: 100%;
+
+                object-fit: contain;
+
+                transform: scale(1);
+            }
+
+            .character-ring {
+                max-width: 280px;
+                max-height: 280px;
+            }
+
+            .hero h1 {
+                max-width: 100%;
+
+                font-size:
+                    clamp(48px, 15vw, 65px);
+            }
+
+            .hero-description {
+                max-width: 100%;
+            }
+
+            .hero-actions {
+                width: 100%;
+            }
+
+            .primary-button,
+            .secondary-button {
+                max-width: 100%;
+            }
+
+            .chapter-grid {
+                width: 100%;
+            }
+
+            .chapter-card {
+                width: 100%;
+            }
+
+            .card-content {
+                max-width: calc(100% - 60px);
+            }
+
+            .card-content h3 {
+                font-size:
+                    clamp(30px, 9vw, 38px);
+            }
+
+            footer {
+                width: 100%;
+            }
+
+        }
+
+
+        /* =====================================================
+           TELAS MUITO PEQUENAS
+        ===================================================== */
+
+        @media (max-width: 380px) {
+
+            .navbar {
+                padding: 0 15px;
+            }
+
+            .hero {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .chapters {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero-character {
+                height: 340px;
+            }
+
+            .character-ring {
+                width: 240px;
+                height: 240px;
+            }
+
+            .chapter-card {
+                min-height: 290px;
+
+                padding: 25px;
+            }
+
+            .card-content {
+                left: 25px;
+                bottom: 25px;
+            }
+
+            .card-arrow {
+                right: 25px;
+                bottom: 25px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- FUNDO DECORATIVO -->
+
+    <div class="background">
+
+        <div class="orb orb-one"></div>
+
+        <div class="orb orb-two"></div>
+
+        <div class="grain"></div>
+
+    </div>
+
+
+    <!-- MENU -->
+
+    <header class="navbar">
+
+        <a href="index.html" class="brand">
+
+            <span class="brand-symbol">
+                ♡
+            </span>
+
+            <span>
+                PARA VOCÊ
+            </span>
+
+        </a>
+
+
+        <nav class="navigation">
+
+            <a href="index.html" class="active">
+                INÍCIO
+            </a>
+
+            <a href="sanrio.html">
+                SOFT SIDE
+            </a>
+
+            <a href="memories.html">
+                HISTÓRIAS
+            </a>
+
+            <a href="mensagens.html">
+                MENSAGENS
+            </a>
+
+            <a href="jujutsu.html">
+                ANOTHER SIDE
+            </a>
+
+        </nav>
+
+
+        <button
+            class="menu-button"
+            id="menuButton"
+            type="button"
+            aria-label="Abrir menu"
+        >
+
+            <span></span>
+            <span></span>
+
+        </button>
+
+    </header>
+
+
+    <!-- MENU MOBILE -->
+
+    <div
+        class="mobile-menu"
+        id="mobileMenu"
+    >
+
+        <a href="index.html">
+            Início
+        </a>
+
+        <a href="sanrio.html">
+            Soft Side
+        </a>
+
+        <a href="memories.html">
+            Histórias
+        </a>
+
+        <a href="mensagens.html">
+            Mensagens
+        </a>
+
+        <a href="jujutsu.html">
+            Another Side
+        </a>
+
+    </div>
+
+
+    <!-- CONTEÚDO -->
+
+    <main>
+
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+
+            <div class="hero-content">
+
+
+                <div class="mini-title">
+
+                    <span></span>
+
+                    UMA EXPERIÊNCIA FEITA PARA VOCÊ
+
+                </div>
+
+
+                <h1>
+
+                    Uma pequena
+
+                    <strong>
+                        história.
+                    </strong>
+
+                </h1>
+
+
+                <p class="hero-description">
+
+                    Um lugar feito para guardar momentos,
+                    mensagens e pequenas coisas que tornam
+                    tudo mais especial.
+
+                </p>
+
+
+                <div class="hero-actions">
+
+                    <a
+                        href="sanrio.html"
+                        class="primary-button"
+                    >
+
+                        <span>
+                            Começar
+                        </span>
+
+                        <b>
+                            →
+                        </b>
+
+                    </a>
+
+
+                    <a
+                        href="mensagens.html"
+                        class="secondary-button"
+                    >
+
+                        Ver mensagens
+
+                    </a>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- RENDER PRINCIPAL -->
+
+            <div class="hero-character">
+
+                <div class="character-ring"></div>
+
+
+                <div class="image-area">
+
+                    <img
+                        src="png anv/moroll.png"
+                        alt="Cinnamoroll"
+                        class="hero-render"
+                    >
+
+                </div>
+
+
+                <div class="floating-label label-one">
+                    ♡
+                </div>
+
+
+                <div class="floating-label label-two">
+                    01
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- INTRODUÇÃO -->
+
+        <section class="intro-section">
+
+            <div class="intro-number">
+                01
+            </div>
+
+
+            <div class="intro-text">
+
+                <span class="section-label">
+                    BEM-VINDA
+                </span>
+
+
+                <h2>
+
+                    Esse lugar foi feito
+
+                    <em>
+                        com carinho.
+                    </em>
+
+                </h2>
+
+            </div>
+
+
+            <p class="intro-description">
+
+                Cada parte desse site representa
+                um pedacinho diferente dessa história.
+
+            </p>
+
+        </section>
+
+
+        <!-- CAPÍTULOS -->
+
+        <section class="chapters">
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="section-label">
+                        EXPLORE
+                    </span>
+
+                    <h2>
+                        Escolha um capítulo
+                    </h2>
+
+                </div>
+
+
+                <span class="chapter-count">
+                    04 PARTES
+                </span>
+
+            </div>
+
+
+            <div class="chapter-grid">
+
+
+                <!-- SOFT SIDE -->
+
+                <a
+                    href="sanrio.html"
+                    class="chapter-card card-pink"
+                >
+
+                    <div class="card-number">
+                        01
+                    </div>
+
+
+                    <div class="card-decoration">
+                        ♡
+                    </div>
+
+
+                    <div class="card-content">
+
+                        <span>
+                            SOFT SIDE
+                        </span>
+
+
+                        <h3>
+
+                            Um lado
+
+                            <br>
+
+                            mais leve.
+
+                        </h3>
+
+
+                        <p>
+                            Badtz-Maru • Cinnamoroll
+                        </p>
+
+                    </div>
+
+
+                    <div class="card-arrow">
+                        →
+                    </div>
+
+                </a>
+
+
+                <!-- HISTÓRIAS -->
+
+                <a
+                    href="memories.html"
+                    class="chapter-card card-purple"
+                >
+
+                    <div class="card-number">
+                        02
+                    </div>
+
+
+                    <div class="card-decoration">
+                        ✦
+                    </div>
+
+
+                    <div class="card-content">
+
+                        <span>
+                            HISTÓRIAS
+                        </span>
+
+
+                        <h3>
+
+                            Algumas histórias
+
+                            <br>
+
+                            lembram a nossa.
+
+                        </h3>
+
+
+                        <p>
+                            Personagens • sentimentos • nós
+                        </p>
+
+                    </div>
+
+
+                    <div class="card-arrow">
+                        →
+                    </div>
+
+                </a>
+
+
+                <!-- MENSAGENS -->
+
+                <a
+                    href="mensagens.html"
+                    class="chapter-card card-rose"
+                >
+
+                    <div class="card-number">
+                        03
+                    </div>
+
+
+                    <div class="card-decoration">
+                        ♡
+                    </div>
+
+
+                    <div class="card-content">
+
+                        <span>
+                            MENSAGENS
+                        </span>
+
+
+                        <h3>
+
+                            Algumas
+
+                            <br>
+
+                            coisas para dizer.
+
+                        </h3>
+
+
+                        <p>
+                            Palavras feitas especialmente para você
+                        </p>
+
+                    </div>
+
+
+                    <div class="card-arrow">
+                        →
+                    </div>
+
+                </a>
+
+
+                <!-- ANOTHER SIDE -->
+
+                <a
+                    href="jujutsu.html"
+                    class="chapter-card card-dark"
+                >
+
+                    <div class="card-number">
+                        04
+                    </div>
+
+
+                    <div class="card-decoration">
+                        ◇
+                    </div>
+
+
+                    <div class="card-content">
+
+                        <span>
+                            ANOTHER SIDE
+                        </span>
+
+
+                        <h3>
+
+                            Um lado
+
+                            <br>
+
+                            diferente.
+
+                        </h3>
+
+
+                        <p>
+                            Geto • Itadori • Megumi • Choso
+                        </p>
+
+                    </div>
+
+
+                    <div class="card-arrow">
+                        →
+                    </div>
+
+                </a>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- FINAL -->
+
+        <section class="ending">
+
+            <div class="ending-symbol">
+                ♡
+            </div>
+
+
+            <span>
+                A HISTÓRIA APENAS COMEÇOU
+            </span>
+
+
+            <h2>
+
+                Feito para
+
+                <em>
+                    você.
+                </em>
+
+            </h2>
+
+
+            <a
+                href="mensagens.html"
+                class="ending-button"
+            >
+                Continuar →
+            </a>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <span>
+            ♡ FEITO ESPECIALMENTE PARA VOCÊ
+        </span>
+
+        <span>
+            2026
+        </span>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>
+```
