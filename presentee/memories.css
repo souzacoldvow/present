@@ -1,0 +1,431 @@
+/* ================= MEMORIES BOOK ================= */
+
+.memories-page {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 10% 20%, rgba(255,190,215,.4), transparent 25%),
+        radial-gradient(circle at 90% 80%, rgba(255,220,235,.5), transparent 30%),
+        #fff7fa;
+    color: #572d40;
+}
+
+.memory-book-page {
+    min-height: 100vh;
+    padding: 120px 25px 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.memory-book {
+    position: relative;
+    width: min(900px, 92vw);
+    height: 620px;
+
+    perspective: 1800px;
+}
+
+
+/* CAPA */
+
+.book-cover {
+    position: absolute;
+    inset: 0;
+
+    z-index: 10;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 40px;
+
+    overflow: hidden;
+
+    border-radius: 8px 20px 20px 8px;
+
+    background:
+        radial-gradient(circle at 50% 20%, rgba(255,255,255,.5), transparent 25%),
+        linear-gradient(145deg, #f7a8c3, #e879a0 55%, #d65380);
+
+    box-shadow:
+        20px 30px 70px rgba(100,35,60,.3);
+
+    transform-origin: left center;
+
+    transition:
+        transform 1s ease,
+        opacity .5s ease;
+}
+
+.book-cover::before {
+    content: "";
+
+    position: absolute;
+    inset: 18px;
+
+    border: 1px solid rgba(255,255,255,.6);
+
+    border-radius: 5px 14px 14px 5px;
+}
+
+.book-cover.cover-hidden {
+    transform: rotateY(-105deg);
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+/* CAPA TEXTOS */
+
+.cover-decoration {
+    position: relative;
+    z-index: 2;
+
+    margin-bottom: 20px;
+
+    color: white;
+
+    font-size: 42px;
+
+    animation: memoriesFloat 3s infinite ease-in-out;
+}
+
+@keyframes memoriesFloat {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+
+}
+
+.book-small-title {
+    position: relative;
+    z-index: 2;
+
+    color: rgba(255,255,255,.85);
+
+    font-size: 9px;
+    letter-spacing: 5px;
+}
+
+.book-cover h1 {
+    position: relative;
+    z-index: 2;
+
+    margin: 15px 0 8px;
+
+    color: white;
+
+    font-family: Georgia, serif;
+
+    font-size: clamp(65px, 9vw, 105px);
+
+    font-weight: normal;
+    font-style: italic;
+}
+
+.book-cover p {
+    position: relative;
+    z-index: 2;
+
+    max-width: 300px;
+
+    color: rgba(255,255,255,.9);
+
+    font-family: Georgia, serif;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+/* BOTÃO */
+
+.open-book {
+    position: relative;
+    z-index: 2;
+
+    margin-top: 30px;
+
+    padding: 15px 20px 15px 24px;
+
+    display: flex;
+    align-items: center;
+    gap: 25px;
+
+    border: none;
+    border-radius: 30px;
+
+    background: white;
+
+    color: #c94e76;
+
+    cursor: pointer;
+
+    font-size: 10px;
+    letter-spacing: 1px;
+
+    transition: .3s;
+}
+
+.open-book:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 15px 35px rgba(100,30,60,.25);
+}
+
+.open-book span {
+    font-size: 17px;
+}
+
+.cover-bottom {
+    position: absolute;
+    bottom: 25px;
+
+    color: rgba(255,255,255,.7);
+
+    font-size: 8px;
+    letter-spacing: 3px;
+}
+
+
+/* CONTEÚDO */
+
+.book-content {
+    position: absolute;
+    inset: 0;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    transform: scale(.95);
+
+    background: #fffdfb;
+
+    border-radius: 8px 20px 20px 8px;
+
+    box-shadow:
+        20px 30px 70px rgba(90,35,55,.18);
+
+    transition:
+        opacity .6s ease,
+        transform .6s ease;
+}
+
+.book-content.book-visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+/* PÁGINAS */
+
+.book-page {
+    position: absolute;
+    inset: 0;
+
+    display: none;
+
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    padding: 70px 12%;
+
+    background:
+        radial-gradient(
+            circle at 90% 10%,
+            rgba(255,190,215,.35),
+            transparent 22%
+        ),
+        #fffdfb;
+}
+
+.book-page.active-page {
+    display: flex;
+
+    animation: memoryPageIn .6s ease;
+}
+
+@keyframes memoryPageIn {
+
+    from {
+        opacity: 0;
+        transform: translateX(35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+}
+
+
+/* DETALHES */
+
+.page-number {
+    position: absolute;
+
+    top: 30px;
+    right: 35px;
+
+    color: #d9a2b7;
+
+    font-family: Georgia, serif;
+
+    font-size: 13px;
+}
+
+.page-decoration {
+    position: absolute;
+
+    top: 28px;
+    left: 35px;
+
+    color: #e879a0;
+
+    font-size: 23px;
+}
+
+.page-label {
+    margin-bottom: 18px;
+
+    color: #d55d86;
+
+    font-size: 9px;
+    letter-spacing: 4px;
+}
+
+
+/* TEXTO */
+
+.book-page h2 {
+    max-width: 650px;
+
+    margin: 0 0 28px;
+
+    color: #572d40;
+
+    font-family: Georgia, serif;
+
+    font-size: clamp(42px, 6vw, 70px);
+
+    font-weight: normal;
+
+    line-height: .95;
+}
+
+.book-page p {
+    max-width: 540px;
+
+    margin-bottom: 12px;
+
+    color: #866a76;
+
+    font-size: 13px;
+
+    line-height: 1.9;
+}
+
+
+/* PRÓXIMA */
+
+.next-page {
+    margin-top: 28px;
+
+    padding: 12px 0;
+
+    border: none;
+    border-bottom: 1px solid #df789d;
+
+    background: transparent;
+
+    color: #c54d76;
+
+    cursor: pointer;
+
+    font-size: 10px;
+    letter-spacing: 1px;
+
+    transition: .3s;
+}
+
+.next-page:hover {
+    padding-left: 8px;
+
+    color: #9e3158;
+}
+
+
+/* FINAL */
+
+.final-book-page {
+    align-items: center;
+
+    text-align: center;
+}
+
+.book-final-button {
+    display: inline-flex;
+
+    margin-top: 25px;
+
+    padding: 14px 22px;
+
+    border-radius: 30px;
+
+    background: #d95783;
+
+    color: white;
+
+    font-size: 10px;
+
+    transition: .3s;
+}
+
+.book-final-button:hover {
+    transform: translateY(-4px);
+
+    background: #c54270;
+}
+
+
+/* CELULAR */
+
+@media (max-width: 700px) {
+
+    .memory-book-page {
+        padding: 105px 15px 40px;
+    }
+
+    .memory-book {
+        width: 94vw;
+        height: 650px;
+    }
+
+    .book-page {
+        padding: 60px 30px;
+    }
+
+    .book-page h2 {
+        font-size: 42px;
+    }
+
+    .book-page p {
+        font-size: 12px;
+    }
+
+}

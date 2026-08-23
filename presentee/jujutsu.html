@@ -1,0 +1,1029 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Seus Favoritos</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: #050609;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================================================
+   FUNDO
+========================================================= */
+
+.jujutsu-page {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(0, 80, 255, .20),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 85% 75%,
+            rgba(255, 20, 55, .18),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            135deg,
+            #030406 0%,
+            #090b12 48%,
+            #030406 100%
+        );
+}
+
+
+/* =========================================================
+   LUZ AZUL
+========================================================= */
+
+.blue-light {
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    left: -180px;
+    top: 80px;
+
+    border-radius: 50%;
+
+    background: rgba(0, 85, 255, .18);
+
+    filter: blur(100px);
+
+    animation: bluePulse 5s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   LUZ VERMELHA
+========================================================= */
+
+.red-light {
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    right: -180px;
+    bottom: 50px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 25, 55, .16);
+
+    filter: blur(100px);
+
+    animation: redPulse 5s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+
+@keyframes bluePulse {
+
+    0%, 100% {
+        opacity: .45;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: .8;
+        transform: scale(1.15);
+    }
+}
+
+
+@keyframes redPulse {
+
+    0%, 100% {
+        opacity: .4;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: .75;
+        transform: scale(1.12);
+    }
+}
+
+
+/* =========================================================
+   CÍRCULO CENTRAL
+========================================================= */
+
+.curse-circle {
+    position: absolute;
+
+    width: 700px;
+    height: 700px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255,255,255,.07);
+
+    box-shadow:
+        0 0 80px rgba(0, 70, 255, .08),
+        inset 0 0 80px rgba(255, 0, 50, .05);
+
+    pointer-events: none;
+}
+
+
+.curse-circle::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 35px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(0, 90, 255, .12);
+}
+
+
+.curse-circle::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 80px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255, 30, 55, .10);
+}
+
+
+/* =========================================================
+   LINHAS
+========================================================= */
+
+.energy-line {
+    position: absolute;
+
+    width: 100%;
+    height: 1px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 100, 255, .45),
+        transparent
+    );
+
+    opacity: .5;
+}
+
+
+.line-one {
+    top: 25%;
+}
+
+
+.line-two {
+    top: 72%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 30, 55, .4),
+        transparent
+    );
+}
+
+
+/* =========================================================
+   CONTEÚDO
+========================================================= */
+
+.jujutsu-content {
+    position: relative;
+
+    z-index: 10;
+
+    width: min(1200px, 90%);
+
+    margin: auto;
+
+    padding: 90px 0 80px;
+}
+
+
+/* =========================================================
+   TÍTULO
+========================================================= */
+
+.jujutsu-tag {
+    display: inline-block;
+
+    margin-bottom: 18px;
+
+    color: #4d82ff;
+
+    font-size: 9px;
+
+    font-weight: bold;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+}
+
+
+.jujutsu-title {
+    max-width: 700px;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: clamp(55px, 8vw, 100px);
+
+    font-weight: normal;
+
+    line-height: .85;
+
+    letter-spacing: -5px;
+}
+
+
+.jujutsu-title span {
+    color: #e52d48;
+
+    font-style: italic;
+}
+
+
+.jujutsu-description {
+    max-width: 470px;
+
+    margin-top: 28px;
+
+    color: #8d929d;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   QUATRO CARDS
+========================================================= */
+
+.jujutsu-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 18px;
+
+    margin-top: 70px;
+}
+
+
+.jujutsu-card {
+    position: relative;
+
+    height: 390px;
+
+    overflow: hidden;
+
+    background: rgba(10, 12, 18, .8);
+
+    border: 1px solid rgba(255,255,255,.09);
+
+    transition:
+        transform .4s ease,
+        border-color .4s ease,
+        box-shadow .4s ease;
+
+    isolation: isolate;
+}
+
+
+.jujutsu-card:nth-child(odd) {
+    border-color: rgba(0, 90, 255, .25);
+}
+
+
+.jujutsu-card:nth-child(even) {
+    border-color: rgba(255, 30, 55, .25);
+}
+
+
+.jujutsu-card:hover {
+    transform: translateY(-10px);
+
+    border-color: rgba(255,255,255,.35);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.5),
+        0 0 35px rgba(0, 70, 255, .12);
+}
+
+
+/* =========================================================
+   EFEITO DOS CARDS
+========================================================= */
+
+.jujutsu-card::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: -1;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0, 75, 255, .13),
+            transparent 45%,
+            rgba(255, 25, 50, .10)
+        );
+}
+
+
+.jujutsu-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    right: -80px;
+    bottom: -80px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 25, 50, .12);
+
+    filter: blur(35px);
+}
+
+
+/* =========================================================
+   NÚMERO
+========================================================= */
+
+.card-number {
+    position: absolute;
+
+    top: 18px;
+    left: 18px;
+
+    color: rgba(255,255,255,.35);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    z-index: 30;
+}
+
+
+/* =========================================================
+   PLACEHOLDER
+========================================================= */
+
+.character-placeholder {
+    position: absolute;
+
+    inset: 35px 15px 70px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: rgba(255,255,255,.15);
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    border: 1px dashed rgba(255,255,255,.08);
+
+    z-index: 1;
+}
+
+
+/* =========================================================
+   PERSONAGENS PNG
+========================================================= */
+
+.jujutsu-character {
+    position: absolute;
+
+    left: 50%;
+    bottom: 42px;
+
+    transform: translateX(-50%);
+
+    width: 115%;
+    height: 88%;
+
+    object-fit: contain;
+    object-position: center bottom;
+
+    display: block;
+
+    z-index: 20;
+
+    pointer-events: none;
+
+    filter:
+        drop-shadow(
+            0 12px 18px rgba(0,0,0,.65)
+        );
+}
+
+
+/* MEGUMI */
+
+.jujutsu-card:nth-child(1) .jujutsu-character {
+    width: 125%;
+    height: 92%;
+}
+
+
+/* ITADORI */
+
+.jujutsu-card:nth-child(2) .jujutsu-character {
+    width: 120%;
+    height: 92%;
+}
+
+
+/* CHOSO */
+
+.jujutsu-card:nth-child(3) .jujutsu-character {
+    width: 125%;
+    height: 92%;
+}
+
+
+/* GETO */
+
+.jujutsu-card:nth-child(4) .jujutsu-character {
+    width: 125%;
+    height: 92%;
+}
+
+
+/* =========================================================
+   NOMES
+========================================================= */
+
+.character-name {
+    position: absolute;
+
+    left: 20px;
+    bottom: 20px;
+
+    z-index: 30;
+
+    font-family: Georgia, serif;
+
+    font-size: 22px;
+
+    letter-spacing: 1px;
+}
+
+
+.character-role {
+    position: absolute;
+
+    right: 20px;
+    bottom: 22px;
+
+    z-index: 30;
+
+    color: #737883;
+
+    font-size: 7px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   DIVISÃO
+========================================================= */
+
+.jujutsu-divider {
+    width: 100%;
+
+    height: 1px;
+
+    margin-top: 60px;
+
+    background: linear-gradient(
+        90deg,
+        rgba(0,80,255,.5),
+        transparent,
+        rgba(255,30,50,.5)
+    );
+}
+
+
+/* =========================================================
+   RODAPÉ
+========================================================= */
+
+.jujutsu-footer {
+    margin-top: 35px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    color: #5f636c;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+
+.jujutsu-footer span:last-child {
+    color: #e52d48;
+}
+
+
+/* =========================================================
+   RESPONSIVO — TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .jujutsu-content {
+        width: min(1200px, 92%);
+    }
+
+    .jujutsu-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVO — CELULAR
+   Mantém o visual original e apenas adapta o espaço.
+========================================================= */
+
+@media (max-width: 600px) {
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+
+    .jujutsu-page {
+        width: 100%;
+        min-width: 0;
+        overflow-x: hidden;
+    }
+
+
+    .jujutsu-content {
+        width: calc(100% - 30px);
+        max-width: 100%;
+        padding: 60px 0 55px;
+    }
+
+
+    .jujutsu-tag {
+        max-width: 100%;
+
+        font-size: 8px;
+
+        letter-spacing: 3px;
+
+        line-height: 1.5;
+    }
+
+
+    .jujutsu-title {
+        max-width: 100%;
+
+        font-size: clamp(48px, 15vw, 62px);
+
+        line-height: .88;
+
+        letter-spacing: -3px;
+
+        overflow-wrap: normal;
+    }
+
+
+    .jujutsu-description {
+        width: 100%;
+        max-width: 430px;
+
+        margin-top: 24px;
+
+        font-size: 12px;
+
+        line-height: 1.7;
+    }
+
+
+    .jujutsu-grid {
+        width: 100%;
+
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+
+        margin-top: 50px;
+    }
+
+
+    .jujutsu-card {
+        width: 100%;
+
+        height: 360px;
+
+        min-width: 0;
+    }
+
+
+    .jujutsu-character {
+        width: 110%;
+
+        height: 88%;
+
+        bottom: 40px;
+    }
+
+
+    /* Mantém a proporção dos personagens */
+
+    .jujutsu-card:nth-child(1) .jujutsu-character {
+        width: 125%;
+        height: 92%;
+    }
+
+
+    .jujutsu-card:nth-child(2) .jujutsu-character {
+        width: 120%;
+        height: 92%;
+    }
+
+
+    .jujutsu-card:nth-child(3) .jujutsu-character {
+        width: 125%;
+        height: 92%;
+    }
+
+
+    .jujutsu-card:nth-child(4) .jujutsu-character {
+        width: 125%;
+        height: 92%;
+    }
+
+
+    .character-name {
+        left: 18px;
+        bottom: 18px;
+
+        font-size: 21px;
+    }
+
+
+    .character-role {
+        right: 18px;
+        bottom: 20px;
+
+        font-size: 7px;
+
+        letter-spacing: 1.5px;
+    }
+
+
+    .card-number {
+        top: 16px;
+        left: 16px;
+    }
+
+
+    .character-placeholder {
+        inset: 30px 12px 65px;
+
+        font-size: 9px;
+
+        letter-spacing: 2px;
+    }
+
+
+    .curse-circle {
+        width: 450px;
+        height: 450px;
+    }
+
+
+    .blue-light,
+    .red-light {
+        width: 380px;
+        height: 380px;
+    }
+
+
+    .jujutsu-footer {
+        flex-direction: column;
+
+        gap: 12px;
+
+        margin-top: 30px;
+    }
+
+}
+
+
+/* =========================================================
+   CELULARES MUITO PEQUENOS
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .jujutsu-content {
+        width: calc(100% - 24px);
+
+        padding-top: 50px;
+    }
+
+
+    .jujutsu-title {
+        font-size: 46px;
+    }
+
+
+    .jujutsu-description {
+        font-size: 11px;
+    }
+
+
+    .jujutsu-card {
+        height: 340px;
+    }
+
+
+    .character-name {
+        left: 15px;
+        bottom: 16px;
+
+        font-size: 19px;
+    }
+
+
+    .character-role {
+        right: 15px;
+        bottom: 18px;
+
+        font-size: 6px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<main class="jujutsu-page">
+
+
+    <div class="blue-light"></div>
+
+    <div class="red-light"></div>
+
+    <div class="curse-circle"></div>
+
+    <div class="energy-line line-one"></div>
+
+    <div class="energy-line line-two"></div>
+
+
+    <section class="jujutsu-content">
+
+
+        <span class="jujutsu-tag">
+            ANOTHER SIDE • JUJUTSU
+        </span>
+
+
+        <h1 class="jujutsu-title">
+
+            Seus
+            <br>
+
+            <span>favoritos.</span>
+
+        </h1>
+
+
+        <p class="jujutsu-description">
+
+            Seus personagens favoritos de Jujutsu Kaisen,
+            reunidos em um só lugar.
+
+        </p>
+
+
+        <div class="jujutsu-grid">
+
+
+            <!-- MEGUMI -->
+
+            <article class="jujutsu-card">
+
+                <span class="card-number">
+                    01
+                </span>
+
+                <div class="character-placeholder">
+                    CHARACTER
+                </div>
+
+                <img
+                    src="png anv/megume.png"
+                    class="jujutsu-character"
+                    alt="Megumi Fushiguro"
+                >
+
+                <h2 class="character-name">
+                    Megumi
+                </h2>
+
+                <span class="character-role">
+                    Fushiguro
+                </span>
+
+            </article>
+
+
+            <!-- ITADORI -->
+
+            <article class="jujutsu-card">
+
+                <span class="card-number">
+                    02
+                </span>
+
+                <div class="character-placeholder">
+                    CHARACTER
+                </div>
+
+                <img
+                    src="png anv/itadori.png"
+                    class="jujutsu-character"
+                    alt="Yuji Itadori"
+                >
+
+                <h2 class="character-name">
+                    Itadori
+                </h2>
+
+                <span class="character-role">
+                    Yuji
+                </span>
+
+            </article>
+
+
+            <!-- CHOSO -->
+
+            <article class="jujutsu-card">
+
+                <span class="card-number">
+                    03
+                </span>
+
+                <div class="character-placeholder">
+                    CHARACTER
+                </div>
+
+                <img
+                    src="png anv/choso.png"
+                    class="jujutsu-character"
+                    alt="Choso"
+                >
+
+                <h2 class="character-name">
+                    Choso
+                </h2>
+
+                <span class="character-role">
+                    Death Painting
+                </span>
+
+            </article>
+
+
+            <!-- GETO -->
+
+            <article class="jujutsu-card">
+
+                <span class="card-number">
+                    04
+                </span>
+
+                <div class="character-placeholder">
+                    CHARACTER
+                </div>
+
+                <img
+                    src="png anv/getou.png"
+                    class="jujutsu-character"
+                    alt="Suguru Geto"
+                >
+
+                <h2 class="character-name">
+                    Geto
+                </h2>
+
+                <span class="character-role">
+                    Suguru
+                </span>
+
+            </article>
+
+
+        </div>
+
+
+        <div class="jujutsu-divider"></div>
+
+
+        <footer class="jujutsu-footer">
+
+            <span>
+                ANOTHER SIDE
+            </span>
+
+            <span>
+                CURSED ENERGY
+            </span>
+
+        </footer>
+
+
+    </section>
+
+
+</main>
+
+</body>
+
+</html>
+```
